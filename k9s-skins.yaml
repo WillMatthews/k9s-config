@@ -1,0 +1,29 @@
+# Configuration for k9s_configure.sh.
+
+# Base skin, from https://github.com/derailed/k9s/tree/master/skins.
+# It must set its background through a `background: &background` anchor, which
+# the script checks for. Dark skins work best with the tints below.
+theme: one-dark
+
+# Background colour for each variant. The script makes one copy of the theme per
+# entry, e.g. one-dark-red.yaml.
+colours:
+  red: "#3f1f28"
+  orange: "#3f2f1f"
+  green: "#1f2f28"
+  blue: "#1f283f"
+  purple: "#2f1f3f"
+  grey: "#2f2f2f"
+
+# The colour each kube context gets. The cluster name is looked up in your
+# kubeconfig; set `cluster:` yourself if the context isn't in it yet.
+contexts:
+  - name: aks-bo-nd-dev
+    colour: red
+  - name: aks-bondtest-uk
+    colour: purple
+  - name: minikube
+    colour: grey
+  # - name: arn:aws:eks:eu-west-2:123456789012:cluster/staging
+  #   cluster: arn:aws:eks:eu-west-2:123456789012:cluster/staging
+  #   colour: orange
