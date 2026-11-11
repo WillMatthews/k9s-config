@@ -1,0 +1,15 @@
+theme: test-dark
+colours:
+  red: "#3f1f28"
+  blue: "#1f283f"
+  grey: "#2f2f2f"
+contexts:
+  - name: aks-dev
+    colour: blue
+  - match: "*prod*"
+    colour: red
+  - name: not-in-kubeconfig
+    cluster: future-cluster
+    colour: red
+  - name: no-cluster-given
+    colour: blue

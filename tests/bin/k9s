@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Stand-in for k9s in tests: only `k9s info`, coloured like the real one.
+# Paths follow the XDG variables; FAKE_K9S_VERSION sets the version.
+set -euo pipefail
+[[ "${1:-}" == info ]] || { echo "fake k9s only supports 'info'" >&2; exit 1; }
+e="$(printf '\033')"
+field() { printf '%s[36m%s:%s[0m   %s\n' "$e" "$1" "$e" "$2"; }
+field Version "v${FAKE_K9S_VERSION:-0.32.7}"
+field Config "$XDG_CONFIG_HOME/k9s/config.yaml"
+field Skins "$XDG_CONFIG_HOME/k9s/skins"
+field "Context Configs" "$XDG_DATA_HOME/k9s/clusters"
+field Logs "$XDG_STATE_HOME/k9s/k9s.log"

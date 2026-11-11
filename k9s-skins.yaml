@@ -15,15 +15,25 @@ colours:
   purple: "#2f1f3f"
   grey: "#2f2f2f"
 
-# The colour each kube context gets. The cluster name is looked up in your
-# kubeconfig; set `cluster:` yourself if the context isn't in it yet.
+# Rules for the colour each kube context gets, checked against every context in
+# your kubeconfig. The first rule that matches a context wins.
+#   name:  matches one context exactly
+#   match: a shell glob pattern, e.g. "*prod*"
 contexts:
-  - name: aks-bo-nd-dev
-    colour: red
-  - name: aks-bondtest-uk
-    colour: purple
   - name: minikube
-    colour: grey
-  # - name: arn:aws:eks:eu-west-2:123456789012:cluster/staging
-  #   cluster: arn:aws:eks:eu-west-2:123456789012:cluster/staging
+    colour: green
+  - match: "*prod*"
+    colour: red
+  - match: "*test*"
+    colour: purple
+  - match: "*dev*"
+    colour: blue
+  # The cluster is looked up in your kubeconfig. For a `name` rule you can set
+  # it yourself, so the skin is ready before the context is added:
+  # - name: aks-staging
+  #   cluster: aks-staging-cluster
   #   colour: orange
+
+# Colour for contexts that no rule matches. Leave it out to leave those
+# contexts alone.
+default: grey

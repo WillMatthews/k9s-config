@@ -1,0 +1,10 @@
+# test-dark on master
+foreground: &foreground "#abb2bf"
+background: &background "#111111"
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+  frame:
+    title:
+      bgColor: *background

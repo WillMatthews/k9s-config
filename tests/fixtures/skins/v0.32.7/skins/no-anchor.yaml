@@ -1,0 +1,4 @@
+# A skin that sets its background colours directly, so it can't be recoloured.
+k9s:
+  body:
+    bgColor: "#000000"

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Stand-in for pgrep in tests: "finds" k9s only when FAKE_K9S_RUNNING=1.
+[[ "${FAKE_K9S_RUNNING:-0}" == 1 ]]
